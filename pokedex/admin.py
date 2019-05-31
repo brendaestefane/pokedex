@@ -4,4 +4,4 @@ from .models import *
 admin.site.register(Habilidade)
 admin.site.register(Categoria)
 admin.site.register(Pokemon)
-admin.site.register(Evolucao)
+# admin.site.register(Evolucao)

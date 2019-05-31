@@ -19,22 +19,22 @@ class Habilidade(models.Model):
     def __str__(self):
         return self.nome
 
-
-class Evolucao(models.Model):
-    imagem = models.FileField(upload_to='fotos/')
-    nome = models.CharField(max_length=120)
-    altura = models.FloatField()
-    fk_categoria = models.ForeignKey('Categoria', on_delete=models.PROTECT)
-    fk_habilidades = models.ManyToManyField(Habilidade)
-    ponto_saude = models.PositiveIntegerField()
-    ataque = models.PositiveIntegerField()
-    defesa = models.PositiveIntegerField()
-    ataque_especial = models.PositiveIntegerField()
-    defesa_especial = models.PositiveIntegerField()
-    velocidade = models.PositiveIntegerField()
-
-    def __str__(self):
-        return self.nome
+#
+# class Evolucao(models.Model):
+#     imagem = models.FileField(upload_to='fotos/')
+#     nome = models.CharField(max_length=120)
+#     altura = models.FloatField()
+#     fk_categoria = models.ForeignKey('Categoria', on_delete=models.PROTECT)
+#     fk_habilidades = models.ManyToManyField(Habilidade)
+#     ponto_saude = models.PositiveIntegerField()
+#     ataque = models.PositiveIntegerField()
+#     defesa = models.PositiveIntegerField()
+#     ataque_especial = models.PositiveIntegerField()
+#     defesa_especial = models.PositiveIntegerField()
+#     velocidade = models.PositiveIntegerField()
+#
+#     def __str__(self):
+#         return self.nome
 
 
 class Pokemon(models.Model):
@@ -43,13 +43,13 @@ class Pokemon(models.Model):
     altura = models.FloatField()
     fk_categoria = models.ForeignKey('Categoria', on_delete=models.PROTECT)
     fk_habilidades = models.ManyToManyField(Habilidade)
-    fk_evolucao = models.ForeignKey('Evolucao', on_delete=models.PROTECT)
     ponto_saude = models.PositiveIntegerField()
     ataque = models.PositiveIntegerField()
     defesa = models.PositiveIntegerField()
     ataque_especial = models.PositiveIntegerField()
     defesa_especial = models.PositiveIntegerField()
     velocidade = models.PositiveIntegerField()
+    evolucao = models.ManyToManyField('Pokemon',null=True, blank=True)
 
     def __str__(self):
         return self.nome
